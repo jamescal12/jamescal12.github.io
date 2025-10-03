@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =====================================================================
+       INFINITY CREATIVE LABS, LLC — Compliance-forward corporate website
+       Author: ChatGPT — October 2025
+       Notes:
+       - Structure tuned for Apple Developer Program organization checks
+       - Public address, domain email, clear org identity
+       - Strong legal pages (Privacy, Terms), Accessibility, Compliance Profile
+       - Contact form = Consultation-only, no numbers or payment language
+       - No numeric tokens in any form labels, options, placeholders, or messages
+       ===================================================================== -->
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>INFINITY CREATIVE LABS, LLC — Architecture • Engineering • Testing Labs</title>
+  <meta name="description" content="INFINITY CREATIVE LABS, LLC — integrated Architecture, Engineering, and in-house Testing Laboratories. Address: 1407 NW 2ND St, 33311 Fort Lauderdale. Email: james.stephens@infinitycreativelabs.org" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================================================================
+       Design Tokens
+       ===================================================================== */
+    :root{
+      --paper:#ffffff;
+      --ink:#0f141a;
+      --muted:#5b6875;
+      --line:#e6edf2;
+      --soft:#f6f9fb;
+
+      --brand:#0e66c0;      /* primary */
+      --brand-2:#00a7b6;    /* secondary */
+      --brand-3:#0a3c63;    /* deep accent */
+      --accent:#caa862;     /* subtle gold */
+
+      --shadow:0 18px 50px rgba(8,20,32,.10);
+      --shadow-2:0 28px 80px rgba(8,20,32,.16);
+      --radius:16px;
+    }
+
+    /* =====================================================================
+       Base
+       ===================================================================== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, sans-serif;
+      line-height:1.75;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    img{max-width:100%; display:block}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:1180px; margin:0 auto; padding:0 24px}
+    .narrow{max-width:920px}
+    section{padding:64px 0; border-bottom:1px solid var(--line)}
+    .section-head{text-align:center; margin-bottom:28px}
+    .section-head h2{
+      margin:0 0 6px;
+      font-family:"Playfair Display", serif;
+      font-size:clamp(24px, 3.8vw, 38px);
+    }
+    .section-head p{margin:0; color:var(--muted)}
+
+    /* =====================================================================
+       Header
+       ===================================================================== */
+    header.site{
+      position:sticky; top:0; z-index:50;
+      background:rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:16px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      font-weight:800; letter-spacing:.3px;
+    }
+    .mark{
+      width:34px; height:34px; border-radius:8px;
+      background:linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.72), 0 3px 10px rgba(0,0,0,.08);
+    }
+    nav a{
+      margin:0 10px;
+      padding:6px 8px;
+      color:var(--ink);
+      font-weight:600;
+      border-radius:8px;
+    }
+    nav a:hover{
+      background:var(--soft);
+      text-decoration:none;
+    }
+    .cta{
+      display:inline-flex; align-items:center; gap:8px;
+      background:linear-gradient(135deg, var(--brand-2), var(--brand));
+      color:#fff; font-weight:800;
+      padding:10px 16px; border-radius:12px; box-shadow:var(--shadow);
+    }
+    .cta:hover{transform:translateY(-1px)}
+
+    /* =====================================================================
+       Hero
+       ===================================================================== */
+    .hero{
+      padding:84px 0 30px;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(1200px 360px at 18% -10%, #eaf3ff 0%, transparent 70%);
+    }
+    .hero-grid{
+      display:grid; grid-template-columns:1.1fr 1fr; gap:34px; align-items:end;
+    }
+    .eyebrow{
+      text-transform:uppercase; letter-spacing:.18em;
+      color:var(--brand); font-size:.82rem; font-weight:800;
+      margin-bottom:10px;
+    }
+    h1.title{
+      margin:0 0 8px;
+      font-family:"Playfair Display", serif;
+      font-size:clamp(36px, 6.2vw, 76px);
+      line-height:1.05;
+      letter-spacing:.2px;
+    }
+    .kicker{
+      color:var(--muted);
+      font-size:clamp(16px, 2.2vw, 20px);
+      margin:0 0 14px;
+    }
+    .chips{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .chip{
+      border:1px solid var(--line);
+      background:#fff;
+      color:#2a3948;
+      border-radius:999px;
+      padding:8px 12px;
+      font-weight:600;
+      box-shadow:0 2px 6px rgba(8,20,32,.04);
+    }
+    .hero .photo{
+      border-radius:16px; overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow-2);
+      aspect-ratio: 4 / 3;
+      background:#dfeaf5;
+    }
+
+    /* =====================================================================
+       Info Bar
+       ===================================================================== */
+    .infobar{
+      background:var(--soft);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      padding:10px 0;
+      font-size:.98rem;
+      color:#394452;
+    }
+    .inline-tags{display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
+    .tag{
+      background:#fff; border:1px solid var(--line); border-radius:10px;
+      padding:6px 10px;
+    }
+
+    /* =====================================================================
+       Gallery
+       ===================================================================== */
+    .gallery{
+      display:grid;
+      grid-template-columns:2fr 1.4fr;
+      gap:18px;
+    }
+    .tile{
+      border-radius:14px; overflow:hidden;
+      border:1px solid var(--line);
+      background:#f1f6fa;
+      box-shadow:var(--shadow);
+      aspect-ratio: 4 / 3;
+    }
+    .tile.tall{grid-row: span 2; aspect-ratio:auto}
+    .tile.wide{grid-column: span 2; aspect-ratio: 21 / 9}
+    .tile .cap{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 12px; background:#fff; border-top:1px solid var(--line);
+      font-size:.95rem; color:#485463;
+    }
+
+    /* =====================================================================
+       Alternating Features
+       ===================================================================== */
+    .feature{
+      display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:center;
+      margin-bottom:28px;
+    }
+    .image{
+      border-radius:14px; overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:var(--shadow);
+      aspect-ratio: 4 / 3;
+    }
+    .feature h3{margin:0 0 6px}
+    .muted{color:var(--muted)}
+
+    /* =====================================================================
+       Cards / Capabilities
+       ===================================================================== */
+    .cards-3{
+      display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      box-shadow:var(--shadow);
+      padding:20px;
+    }
+    .sub{
+      display:inline-block;
+      font-size:.78rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--brand);
+      font-weight:800;
+      margin-bottom:6px;
+    }
+    .card h3{margin:0 0 6px}
+
+    /* =====================================================================
+       Process (textual, no numeric steps to keep form + UX number-light)
+       ===================================================================== */
+    .steps{
+      display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;
+    }
+    .step{
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#fff;
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+
+    /* =====================================================================
+       Labs Matrix
+       ===================================================================== */
+    .matrix{
+      display:grid; grid-template-columns:repeat(4, 1fr); gap:14px;
+    }
+    .matrix .cell{
+      border:1px dashed #cfd9e0; border-radius:12px; background:#fafcfe;
+      padding:14px; color:#344252; font-weight:600;
+    }
+
+    /* =====================================================================
+       Quotes
+       ===================================================================== */
+    .quotes{
+      display:grid; grid-template-columns:1fr 1fr; gap:18px;
+    }
+    .quote{
+      border:1px solid var(--line); border-radius:14px; padding:18px;
+      background:#fff; box-shadow:var(--shadow);
+      font-style:italic;
+    }
+    .who{margin-top:8px; font-style:normal; color:#3c4957; font-weight:700}
+
+    /* =====================================================================
+       FAQ
+       ===================================================================== */
+    .faq{
+      display:grid; grid-template-columns:1fr 1fr; gap:18px;
+    }
+    details{
+      border:1px solid var(--line); border-radius:12px; padding:12px 14px;
+      background:#fff; box-shadow:var(--shadow);
+    }
+    summary{font-weight:700; cursor:pointer}
+
+    /* =====================================================================
+       Contact — Consultation-only Form (no digits in UI)
+       ===================================================================== */
+    .contact-grid{
+      display:grid; grid-template-columns:1.1fr .9fr; gap:22px;
+    }
+    .form-shell{
+      background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .form-head{
+      background:linear-gradient(135deg, var(--brand-2), var(--brand));
+      color:#fff; padding:20px; font-weight:800; letter-spacing:.3px;
+    }
+    fieldset.group{
+      border:0; margin:0; padding:18px 16px; border-top:1px solid var(--line);
+    }
+    .legend{
+      display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;
+    }
+    .legend h4{margin:0}
+    .legend .hint{font-size:.9rem; color:#7a8792}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .grid-3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px}
+
+    label{display:block; font-weight:600; margin-bottom:6px}
+    input,select,textarea{
+      width:100%; border:1px solid #cfd7de; border-radius:12px; padding:12px;
+      background:#fff; color:#13212a; outline:none;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--brand); box-shadow:0 0 0 3px rgba(14,102,192,.12);
+    }
+    textarea{min-height:120px; resize:vertical}
+
+    .segment{display:flex; flex-wrap:wrap; gap:6px}
+    .segment input{display:none}
+    .segment label{
+      border:1px solid #cfd7de; border-radius:999px; padding:8px 12px; cursor:pointer; background:#fff; font-weight:600;
+    }
+    .segment input:checked + label{
+      background:linear-gradient(135deg, var(--brand-2), var(--brand));
+      color:#fff; border-color:transparent;
+    }
+
+    .checklist{display:grid; grid-template-columns:1fr 1fr; gap:8px}
+    .checklist label{
+      display:flex; align-items:center; gap:8px; cursor:pointer;
+      border:1px dashed #cfd7de; border-radius:10px; padding:10px 12px; background:#fafcfe;
+    }
+    .file{
+      border:1px dashed #cfd7de; border-radius:12px; padding:14px; text-align:center; color:#6b7580; background:#fbfeff;
+    }
+    .actions{
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      padding:16px; border-top:1px solid var(--line); background:#fbfdff;
+    }
+    .btn-primary{
+      background:linear-gradient(135deg, var(--brand-2), var(--brand));
+      color:#fff; border:0; padding:12px 16px; border-radius:12px; font-weight:800; cursor:pointer;
+      box-shadow:var(--shadow);
+    }
+    .btn-primary:hover{opacity:.95}
+    .policy{color:#5f6c78; font-size:.92rem}
+
+    .aside{
+      background:var(--soft); border:1px solid var(--line); border-radius:var(--radius); padding:18px;
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .aside .mini{
+      border:1px solid var(--line); border-radius:12px; padding:12px; background:#fff; box-shadow:var(--shadow);
+    }
+
+    /* =====================================================================
+       Footer
+       ===================================================================== */
+    footer{
+      padding:42px 0 70px; text-align:center; color:#65707a;
+    }
+
+    /* =====================================================================
+       Modal
+       ===================================================================== */
+    .modal{
+      position:fixed; inset:0; display:none; place-items:center; background:rgba(12,20,26,.5); z-index:200;
+    }
+    .modal.is-open{display:grid}
+    .modal-card{
+      background:#fff; border-radius:16px; border:1px solid var(--line);
+      width:min(520px, 92vw); padding:26px 22px; text-align:center; box-shadow:0 20px 60px rgba(0,0,0,.22);
+    }
+    .modal-card h3{margin:.2rem 0 8px; font-family:"Playfair Display", serif}
+    .close{
+      background:#0e66c0; color:#fff; border:0; padding:10px 16px; border-radius:10px; font-weight:800; cursor:pointer;
+      margin-top:10px;
+    }
+
+    /* =====================================================================
+       Responsive
+       ===================================================================== */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns:1fr}
+      .feature{grid-template-columns:1fr}
+      .cards-3{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .matrix{grid-template-columns:1fr 1fr}
+      .quotes{grid-template-columns:1fr}
+      .faq{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================================
+       Header
+       ===================================================================== -->
+  <header class="site">
+    <div class="wrap topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true"></span>
+        <span>INFINITY CREATIVE LABS, LLC</span>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#projects">Work</a>
+        <a href="#studio">Studio</a>
+        <a href="#disciplines">Capabilities</a>
+        <a href="#labs">Labs</a>
+        <a href="#compliance">Compliance</a>
+        <a href="#contact" class="cta">Request Consultation</a>
+        <a href="#legal">Legal</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       Hero
+       ===================================================================== -->
+  <section class="hero" id="home" aria-label="Intro">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">Architecture • Engineering • Accredited Testing</div>
+        <h1 class="title">Buildable Concepts. Measurable Performance.</h1>
+        <p class="kicker">
+          We integrate design, engineering, and verification to deliver clean bids, fast permits, and field performance that tracks to intent.
+        </p>
+        <div class="chips" role="list">
+          <span class="chip" role="listitem">Fort Lauderdale • Florida</span>
+          <span class="chip" role="listitem">Residential &amp; Commercial</span>
+          <span class="chip" role="listitem">Envelope • Energy • Acoustics</span>
+          <span class="chip" role="listitem">Resilience &amp; Sustainability</span>
+        </div>
+      </div>
+
+      <div class="photo" title="Editorial studio image">
+        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?q=80&w=1800&auto=format&fit=crop" alt="Modern residence exterior with deep overhangs" style="width:100%;height:100%;object-fit:cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Info Bar
+       ===================================================================== -->
+  <div class="infobar" aria-label="Contact basics">
+    <div class="wrap">
+      <div class="inline-tags">
+        <span class="tag">Address: 1407 NW 2ND St, 33311 Fort Lauderdale</span>
+        <span class="tag">Email: <a href="mailto:james.stephens@infinitycreativelabs.org">james.stephens@infinitycreativelabs.org</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       Projects / Mosaic Gallery
+       ===================================================================== -->
+  <section id="projects" aria-label="Selected Work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected Work</h2>
+        <p>Context-first solutions—from shoreline micro-sites to urban adaptive reuse.</p>
+      </div>
+
+      <div class="gallery">
+        <figure class="tile tall">
+          <img src="main1.jpg" alt="Adaptive reuse lobby with natural light">
+          <figcaption class="cap">Urban Lobby <span>Interior daylighting study</span></figcaption>
+        </figure>
+
+        <figure class="tile">
+          <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1400&auto=format&fit=crop" alt="Coastal single-family with screened lanai">
+          <figcaption class="cap">Coastal Residence <span>Shading and ventilation</span></figcaption>
+        </figure>
+
+        <figure class="tile">
+          <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?q=80&w=1400&auto=format&fit=crop" alt="Courtyard office with landscape">
+          <figcaption class="cap">Courtyard Office <span>Outdoor rooms and comfort</span></figcaption>
+        </figure>
+
+        <figure class="tile wide">
+          <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=2000&auto=format&fit=crop" alt="Mixed-use corner at sunset">
+          <figcaption class="cap">Mixed-Use Corner <span>Facade rhythm and presence</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Studio & Labs — Alternating Features
+       ===================================================================== -->
+  <section id="studio" aria-label="Studio & Labs">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Design Studio & Test Lab — Under One Roof</h2>
+        <p>Design intent is proven in-house before it hits the jobsite.</p>
+      </div>
+
+      <div class="feature">
+        <div class="image">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1600&auto=format&fit=crop" alt="Studio work session with drawings and models" style="width:100%;height:100%;object-fit:cover">
+        </div>
+        <div>
+          <h3>Architecture That Builds Well</h3>
+          <p class="muted">
+            Site, climate, and program guide each concept. Structure, envelope, and services are organized into a clear kit of parts so trades can price and fabricate without guesswork.
+          </p>
+          <p class="muted">
+            Resilience directs detailing: elevated slabs, continuous load paths, corrosion-aware assemblies, and shading strategies that lower cooling demand from day one.
+          </p>
+        </div>
+      </div>
+
+      <div class="feature">
+        <div>
+          <h3>Accredited Testing Laboratories</h3>
+          <p class="muted">
+            We validate assumptions with recognized methods: blower-door and duct leakage, thermal imaging, envelope water intrusion and field acoustics.
+          </p>
+          <p class="muted">
+            Deliverables include raw data, calibrated equipment IDs, and acceptance criteria matched to code or owner standards—ready for officials, commissioning agents, and lenders.
+          </p>
+        </div>
+        <div class="image">
+          <img src="main2.jpg" alt="Technician setting up calibrated blower door" style="width:100%;height:100%;object-fit:cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Capabilities
+       ===================================================================== -->
+  <section id="disciplines" aria-label="Capabilities">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Capabilities</h2>
+        <p>Integrated teams—single point of accountability.</p>
+      </div>
+
+      <div class="cards-3">
+        <article class="card">
+          <span class="sub">Architecture</span>
+          <h3>Residential, Mixed-Use & Adaptive Reuse</h3>
+          <p>
+            Concept through permit and construction support. Climate-specific massing, daylighting studies, and envelope details that balance first cost with lifetime performance.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="sub">Engineering</span>
+          <h3>Structural & MEP Coordination</h3>
+          <p>
+            Timber, steel, and concrete systems with continuous load paths and connections for coastal conditions. BIM coordination to resolve clashes before mobilization.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="sub">Testing Laboratories</span>
+          <h3>Envelope, Energy & Acoustics</h3>
+          <p>
+            Blower door, duct leakage, thermal imaging, water intrusion, and field acoustics. Accredited methods, calibrated gear, permitting-ready reports.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Process (text-only, numberless)
+       ===================================================================== -->
+  <section id="process" aria-label="Process">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Project Flow</h2>
+        <p>Fewer surprises, better handoffs, predictable outcomes.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <p><strong>Discovery and Feasibility.</strong> Constraints, context, and goals are mapped into a clear brief aligned to scope and schedule.</p>
+        </div>
+        <div class="step">
+          <p><strong>Design and Coordination.</strong> Iterative concepts, modeling, and workshops with trades produce drawing sets that drive fast reviews.</p>
+        </div>
+        <div class="step">
+          <p><strong>Verification and Closeout.</strong> Field testing validates envelope and systems; turnover packages document performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Labs Capabilities Matrix
+       ===================================================================== -->
+  <section id="labs" aria-label="Lab Capabilities">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Testing Capabilities</h2>
+        <p>Data-backed performance, documented for reviewers and lenders.</p>
+      </div>
+
+      <div class="matrix">
+        <div class="cell">ASTM E779 Blower Door</div>
+        <div class="cell">Duct Leakage / Duct Blaster</div>
+        <div class="cell">Thermal Imaging</div>
+        <div class="cell">ASTM E1105 Water Intrusion</div>
+        <div class="cell">ASTM E1186 Leakage Investigation</div>
+        <div class="cell">Field Acoustics (STC/NC)</div>
+        <div class="cell">Envelope Commissioning</div>
+        <div class="cell">Energy Modeling Support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Compliance Profile (for Apple checks)
+       ===================================================================== -->
+  <section id="compliance" aria-label="Compliance Profile">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Compliance Profile</h2>
+        <p>Public organization identity and domain-based contact.</p>
+      </div>
+
+      <article class="card" style="margin-bottom:18px">
+        <span class="sub">Organization</span>
+        <h3>INFINITY CREATIVE LABS, LLC</h3>
+        <p class="muted">
+          Legal entity with public address and domain-based email. D-U-N-S® number available upon request. Website content presented for corporate identification and service overview.
+        </p>
+      </article>
+
+      <article class="card" style="margin-bottom:18px">
+        <span class="sub">Website & Email</span>
+        <h3>Public Website and Domain Email</h3>
+        <p class="muted">
+          This website is publicly accessible and the contact email uses the organization’s domain. Direct messages are accepted through the consultation form or by email to
+          <a href="mailto:james.stephens@infinitycreativelabs.org">james.stephens@infinitycreativelabs.org</a>.
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="sub">Privacy & Access</span>
+        <h3>Privacy Policy, Terms, and Accessibility</h3>
+        <p class="muted">
+          We publish privacy and terms pages and maintain an accessibility statement. No online payments are collected on this website.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Testimonials
+       ===================================================================== -->
+  <section id="testimonials" aria-label="Testimonials">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>What Clients Say</h2>
+        <p>Long-term partners, clear deliverables.</p>
+      </div>
+
+      <div class="quotes">
+        <blockquote class="quote">
+          “Drawing packages were clear and review-ready. Coordination with trades was proactive from the start.”
+          <div class="who">— General Contractor</div>
+        </blockquote>
+
+        <blockquote class="quote">
+          “Lab verification kept the schedule intact and closed the loop between design intent and performance.”
+          <div class="who">— Owner</div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       FAQ
+       ===================================================================== -->
+  <section id="faq" aria-label="FAQ">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>FAQ</h2>
+        <p>Short answers to common questions.</p>
+      </div>
+
+      <div class="faq">
+        <details>
+          <summary>Do you work outside Florida?</summary>
+          <p>Yes. We coordinate across the Southeast with local engineers and permitting offices.</p>
+        </details>
+        <details>
+          <summary>Can the lab be hired separately?</summary>
+          <p>Yes. Envelope, energy, and acoustics testing can be engaged as a standalone service.</p>
+        </details>
+        <details>
+          <summary>Do you provide cost estimates here?</summary>
+          <p>No. This website does not collect payments or quote fees. The form initiates a consultation only.</p>
+        </details>
+        <details>
+          <summary>How soon can a conversation begin?</summary>
+          <p>Discovery calls are scheduled by email after we review your note.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Contact — Consultation-only Form (NO digits in UI)
+       ===================================================================== -->
+  <section id="contact" aria-label="Contact">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Request Consultation</h2>
+        <p>Tell us about the site, context, and goals. A reply follows by email.</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- New, consultation-only form -->
+        <form id="contactForm" class="form-shell" aria-label="Consultation request form">
+          <div class="form-head">Consultation Only</div>
+
+          <!-- Group: Contact -->
+          <fieldset class="group">
+            <div class="legend">
+              <h4>Contact</h4>
+              <span class="hint">Work email preferred</span>
+            </div>
+            <div class="grid-2">
+              <div>
+                <label for="fullName">Full Name</label>
+                <input id="fullName" name="fullName" autocomplete="name" placeholder="Your name" required>
+              </div>
+              <div>
+                <label for="email">Work Email</label>
+                <input id="email" name="email" type="email" autocomplete="email" placeholder="you@yourcompany" required>
+              </div>
+            </div>
+            <div class="grid-2" style="margin-top:10px">
+              <div>
+                <label for="org">Organization</label>
+                <input id="org" name="org" autocomplete="organization" placeholder="Company or group">
+              </div>
+              <div>
+                <label for="role">Role</label>
+                <input id="role" name="role" placeholder="Position or responsibility">
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Group: Interests (no numbers) -->
+          <fieldset class="group">
+            <div class="legend">
+              <h4>Interests</h4>
+              <span class="hint">Choose what applies</span>
+            </div>
+            <div class="checklist">
+              <label><input type="checkbox" name="scope" value="Architecture"> Architecture</label>
+              <label><input type="checkbox" name="scope" value="Engineering"> Engineering</label>
+              <label><input type="checkbox" name="scope" value="Testing"> Testing</label>
+              <label><input type="checkbox" name="scope" value="Consultation"> Consultation</label>
+            </div>
+            <div style="margin-top:10px">
+              <label for="location">Location or Jurisdiction</label>
+              <input id="location" name="location" placeholder="City or permitting office">
+            </div>
+          </fieldset>
+
+          <!-- Group: Message (no digits in placeholder) -->
+          <fieldset class="group">
+            <div class="legend">
+              <h4>Message</h4>
+              <span class="hint">Key context</span>
+            </div>
+            <label for="message">Notes</label>
+            <textarea id="message" name="message" placeholder="Site conditions, program, targets, collaboration needs"></textarea>
+
+            <div class="file" style="margin-top:12px">
+              <label for="brief">Upload Brief (PDF or DOC)</label>
+              <input id="brief" name="brief" type="file" accept=".pdf,.doc,.docx">
+            </div>
+          </fieldset>
+
+          <!-- Actions -->
+          <div class="actions">
+            <label class="policy">
+              <input type="checkbox" required>
+              I agree to the privacy policy and understand this form is for consultation only.
+            </label>
+            <button class="btn-primary" type="submit">Send Request</button>
+          </div>
+        </form>
+
+        <!-- Contact aside -->
+        <aside class="aside" aria-label="Direct contact">
+          <div class="mini">
+            <strong>Studio & Lab</strong><br>
+            1407 NW 2ND St, 33311 Fort Lauderdale
+          </div>
+          <div class="mini">
+            <strong>Email</strong><br>
+            <a href="mailto:james.stephens@infinitycreativelabs.org">james.stephens@infinitycreativelabs.org</a>
+          </div>
+          <div class="mini">
+            <strong>Notice</strong>
+            <p class="muted mb-0">
+              This website does not collect payments or quote fees. Messages initiate a consultation only.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Quality & Safety
+       ===================================================================== -->
+  <section id="quality" aria-label="Quality & Safety">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Quality & Safety</h2>
+        <p>Design diligence, field verification, and documentation discipline.</p>
+      </div>
+
+      <article class="card">
+        <span class="sub">Documentation</span>
+        <h3>Clear Deliverables</h3>
+        <p class="muted">
+          Drawing sets align with reviewer expectations; testing reports include method references, calibrated gear, and acceptance criteria.
+        </p>
+      </article>
+
+      <article class="card" style="margin-top:14px">
+        <span class="sub">Coordination</span>
+        <h3>BIM and Trade Workshops</h3>
+        <p class="muted">
+          Interdisciplinary reviews reduce conflicts prior to mobilization and support predictable schedules.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Legal Anchor Section (links jump to on-page policies)
+       ===================================================================== -->
+  <section id="legal" aria-label="Legal">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Legal</h2>
+        <p>Policies that govern this website and services.</p>
+      </div>
+      <p class="center">
+        <a href="#privacy">Privacy Policy</a> • <a href="#terms">Terms of Use</a> • <a href="#accessibility">Accessibility</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Accessibility Statement
+       ===================================================================== -->
+  <section id="accessibility" aria-label="Accessibility">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Accessibility</h2>
+        <p>We aim for an inclusive, perceivable, operable, and robust experience.</p>
+      </div>
+      <p>
+        We design and maintain this site with accessibility in mind. If any element is hard to use with assistive technologies, contact
+        <a href="mailto:james.stephens@infinitycreativelabs.org">james.stephens@infinitycreativelabs.org</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Privacy Policy (concise, on-page)
+       ===================================================================== -->
+  <section id="privacy" aria-label="Privacy Policy">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Privacy Policy</h2>
+        <p>How we handle information on this website.</p>
+      </div>
+      <p>
+        We collect the information you submit through the consultation form or by email for the purpose of responding to your request.
+        We do not sell personal data. We may keep messages to maintain a record of our communications. For requests related to access or deletion, write to
+        <a href="mailto:james.stephens@infinitycreativelabs.org">james.stephens@infinitycreativelabs.org</a>.
+      </p>
+      <p>
+        This website does not process payments. Links to external resources are provided for context; their policies apply when you visit them.
+      </p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Terms of Use (concise, on-page)
+       ===================================================================== -->
+  <section id="terms" aria-label="Terms of Use">
+    <div class="wrap narrow">
+      <div class="section-head">
+        <h2>Terms of Use</h2>
+        <p>Basic conditions for using this website.</p>
+      </div>
+      <p>
+        This site presents services offered by INFINITY CREATIVE LABS, LLC. Content is provided for general information and does not constitute a professional commitment.
+        By sending a message you request a consultation only. We reserve the right to update content and policies.
+      </p>
+      <p>
+        All marks and names on this website remain the property of their respective owners. Unlawful use is prohibited.
+      </p>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       Footer
+       ===================================================================== -->
+  <footer>
+    <div class="wrap">
+      <div>© <span id="y"></span> INFINITY CREATIVE LABS, LLC. All rights reserved.</div>
+      <div style="margin-top:6px">Architecture • Engineering • Testing Laboratories</div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       Success Modal
+       ===================================================================== -->
+  <div class="modal" id="successModal" aria-hidden="true" role="dialog" aria-labelledby="successTitle">
+    <div class="modal-card" role="document">
+      <h3 id="successTitle">Your message was received.</h3>
+      <p>Thanks for reaching out. We will follow up by email.</p>
+      <button class="close" id="closeModal">Close</button>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       JSON-LD Organization (helps public identity; not part of form UI)
+       ===================================================================== -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"INFINITY CREATIVE LABS, LLC",
+    "url":"https://infinitycreativelabs.org",
+    "email":"james.stephens@infinitycreativelabs.org",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"1407 NW 2ND St",
+      "addressLocality":"Fort Lauderdale",
+      "postalCode":"33311",
+      "addressRegion":"FL",
+      "addressCountry":"US"
+    },
+    "description":"Integrated Architecture, Engineering, and in-house Testing Laboratories.",
+    "sameAs":[]
+  }
+  </script>
+
+  <!-- =====================================================================
+       Scripts
+       ===================================================================== -->
+  <script>
+    // Year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Modal logic
+    const modal = document.getElementById('successModal');
+    const closeBtn = document.getElementById('closeModal');
+    function openModal(){
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      closeBtn.focus();
+    }
+    function closeModal(){
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+    // Form submit (demo only) — consultation only, no numeric fields
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      // In production, POST to a backend endpoint here:
+      // await fetch('/api/consultation', { method:'POST', body:new FormData(form) });
+      form.reset();
+      openModal();
+    });
+  </script>
+
+  <!-- =====================================================================
+       Maintainability notes:
+       - Replace main1.jpg/main2.jpg with your own images.
+       - All numeric content is outside the form per requirement.
+       - Legal pages are on-page anchors to keep everything public & simple.
+       - Compliance Profile aligns with Apple org enrollment notes:
+         * Public website + org domain email (support refs in documentation).
+         * Clear org identity and contact, privacy and terms.
+         * No pricing or payment collection on site.
+       ===================================================================== -->
+</body>
+</html>
